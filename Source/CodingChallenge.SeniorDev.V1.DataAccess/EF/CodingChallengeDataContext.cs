@@ -8,6 +8,10 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
 {
     public class CodingChallengeDataContext : DbContext
     {
+        public CodingChallengeDataContext()
+        {
+
+        }
         public CodingChallengeDataContext(DbContextOptions options) : base(options)
         { }
 
