@@ -8,10 +8,10 @@ namespace CodingChallenge.SeniorDev.V1.API.AM
     {
         public AutoMapperProfile()
         {
-            CreateMap<Course, CourseModel>()
-                .ForMember(c => c.TeacherFullName, o => o.MapFrom(c => $"{c.Teacher.FirstName} {c.Teacher.LastName}"))
-                .ForMember(c => c.CurrentStudentCount, o => o.MapFrom(c => c.Students.Count))
-                .ForMember(c => c.CanEnrollMoreStudents, o => o.Ignore());
+            //CreateMap<Course, CourseModel>()
+            //    .ForMember(c => c.TeacherFullName, o => o.MapFrom(c => $"{c.Teacher.FirstName} {c.Teacher.LastName}"))
+            //    .ForMember(c => c.CurrentStudentCount, o => o.MapFrom(c => c.Students.Count))
+            //    .ForMember(c => c.CanEnrollMoreStudents, o => o.Ignore());
         }
     }
 }

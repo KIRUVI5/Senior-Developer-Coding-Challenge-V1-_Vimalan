@@ -4,14 +4,16 @@ using CodingChallenge.SeniorDev.V1.DataAccess.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
 {
     [DbContext(typeof(CodingChallengeDataContext))]
-    partial class CodingChallengeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20211021042356_Relationship_added2")]
+    partial class Relationship_added2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,12 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                     b.Property<int>("MaximumStudentLimit")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("StudentCoursesCourseID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("StudentCoursesStudentID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
@@ -46,6 +54,8 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("TeacherID");
+
+                    b.HasIndex("StudentCoursesStudentID", "StudentCoursesCourseID");
 
                     b.ToTable("Courses");
                 });
@@ -79,7 +89,15 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                     b.Property<string>("RegistrationID")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("StudentCoursesCourseID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("StudentCoursesStudentID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("StudentCoursesStudentID", "StudentCoursesCourseID");
 
                     b.ToTable("Students");
                 });
@@ -93,8 +111,6 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("StudentID", "CourseID");
-
-                    b.HasIndex("CourseID");
 
                     b.ToTable("StudentCourses");
                 });
@@ -135,32 +151,25 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("StudentCoursesStudentID", "StudentCoursesCourseID");
+
                     b.Navigation("Teacher");
-                });
-
-            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", b =>
-                {
-                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.Course", null)
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.Student", null)
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.Course", b =>
-                {
-                    b.Navigation("StudentCourses");
                 });
 
             modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.Student", b =>
                 {
-                    b.Navigation("StudentCourses");
+                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", null)
+                        .WithMany("Students")
+                        .HasForeignKey("StudentCoursesStudentID", "StudentCoursesCourseID");
+                });
+
+            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", b =>
+                {
+                    b.Navigation("Courses");
+
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

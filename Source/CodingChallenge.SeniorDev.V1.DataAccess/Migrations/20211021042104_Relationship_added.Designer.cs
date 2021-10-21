@@ -4,14 +4,16 @@ using CodingChallenge.SeniorDev.V1.DataAccess.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
 {
     [DbContext(typeof(CodingChallengeDataContext))]
-    partial class CodingChallengeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20211021042104_Relationship_added")]
+    partial class Relationship_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,8 +96,6 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
 
                     b.HasKey("StudentID", "CourseID");
 
-                    b.HasIndex("CourseID");
-
                     b.ToTable("StudentCourses");
                 });
 
@@ -127,6 +127,42 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("CourseStudentCourses", b =>
+                {
+                    b.Property<Guid>("CoursesID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentCoursesStudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentCoursesCourseID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CoursesID", "StudentCoursesStudentID", "StudentCoursesCourseID");
+
+                    b.HasIndex("StudentCoursesStudentID", "StudentCoursesCourseID");
+
+                    b.ToTable("CourseStudentCourses");
+                });
+
+            modelBuilder.Entity("StudentStudentCourses", b =>
+                {
+                    b.Property<Guid>("StudentsID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentCoursesStudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StudentCoursesCourseID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("StudentsID", "StudentCoursesStudentID", "StudentCoursesCourseID");
+
+                    b.HasIndex("StudentCoursesStudentID", "StudentCoursesCourseID");
+
+                    b.ToTable("StudentStudentCourses");
+                });
+
             modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.Course", b =>
                 {
                     b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.Teacher", "Teacher")
@@ -138,29 +174,34 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", b =>
+            modelBuilder.Entity("CourseStudentCourses", b =>
                 {
                     b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.Course", null)
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("CourseID")
+                        .WithMany()
+                        .HasForeignKey("CoursesID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", null)
+                        .WithMany()
+                        .HasForeignKey("StudentCoursesStudentID", "StudentCoursesCourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StudentStudentCourses", b =>
+                {
                     b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.Student", null)
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("StudentID")
+                        .WithMany()
+                        .HasForeignKey("StudentsID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.Course", b =>
-                {
-                    b.Navigation("StudentCourses");
-                });
-
-            modelBuilder.Entity("CodingChallenge.SeniorDev.V1.Common.Entity.Student", b =>
-                {
-                    b.Navigation("StudentCourses");
+                    b.HasOne("CodingChallenge.SeniorDev.V1.Common.Entity.StudentCourses", null)
+                        .WithMany()
+                        .HasForeignKey("StudentCoursesStudentID", "StudentCoursesCourseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
