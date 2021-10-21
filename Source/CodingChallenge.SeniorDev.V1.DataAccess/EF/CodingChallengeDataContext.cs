@@ -62,11 +62,40 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
             return await Set<Student>().FindAsync(id);
         }
 
+        public async Task<StudentCourses> GetStudentCourseById(Guid id)
+        {
+            //TODO:Dont take deleted
+            return await StudentCourses.Where(sc => sc.StudentID == id && !sc.IsDeleted).FirstOrDefaultAsync();
+        }
+
+        public async Task<Student> GetStudentByRegistrationId(string registrationID)
+        {
+            return await Students.Where(s => s.RegistrationID == registrationID && !s.IsDeleted).FirstOrDefaultAsync();
+        }
 
         public async Task<Student> CreateStudent(Student entity)
         {
             //TODO:Null Check
             Set<Student>().Add(entity);
+
+            await SaveChangesAsync();
+
+            return entity;
+        }
+
+
+        public async Task<Student> UpdateStudent(Student entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+
+            await SaveChangesAsync();
+
+            return entity;
+        }
+
+        public async Task<StudentCourses> UpdateStudentCourse(StudentCourses entity)
+        {
+            Entry(entity).State = EntityState.Modified;
 
             await SaveChangesAsync();
 

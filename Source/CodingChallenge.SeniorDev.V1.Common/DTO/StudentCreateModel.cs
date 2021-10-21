@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.SeniorDev.V1.Common.DTO
 {
-    public class StudentCreateModel
+    public class StudentCreateModel 
     {
         public string FirstName { get; set; }
 

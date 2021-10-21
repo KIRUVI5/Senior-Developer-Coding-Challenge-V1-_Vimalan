@@ -26,6 +26,12 @@ namespace CodingChallenge.SeniorDev.V1.API.AM
 
             CreateMap<StudentCreateModel, CreateStudentQuery>();
 
+            CreateMap<CreateStudentQuery, StudentCreateModel>();
+
+            CreateMap<StudentDeleteModel, DeleteStudentQuery>();
+
+            CreateMap<DeleteStudentQuery, StudentDeleteModel>();
+
         }
     }
 }
