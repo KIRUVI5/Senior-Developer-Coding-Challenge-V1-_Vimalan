@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CodingChallenge.SeniorDev.V1.Business.Actions.Courses;
+using CodingChallenge.SeniorDev.V1.Business.Actions.Students;
 using CodingChallenge.SeniorDev.V1.Common.DTO;
 using CodingChallenge.SeniorDev.V1.Common.Entity;
 
@@ -16,6 +17,15 @@ namespace CodingChallenge.SeniorDev.V1.API.AM
 
 
             CreateMap<EnrollToCourseQuery, StudentCourses>();
+
+            CreateMap<Teacher, TeacherModel>();
+
+            CreateMap<Student, StudentModel>();
+
+            CreateMap<CreateStudentQuery, Student>();
+
+            CreateMap<StudentCreateModel, CreateStudentQuery>();
+
         }
     }
 }

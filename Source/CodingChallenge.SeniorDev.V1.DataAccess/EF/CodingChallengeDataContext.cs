@@ -33,6 +33,13 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
         public Task<List<Course>> GetAllCourses()
             => Courses.Where(c => !c.IsDeleted).OrderBy(c => c.Title).AsNoTracking().ToListAsync();
 
+        public Task<List<Teacher>> GetAllTeachers()
+          => Teachers.Where(t => !t.IsDeleted).OrderBy(t => t.FirstName).AsNoTracking().ToListAsync();
+
+        public Task<List<Student>> GetAllStudents()
+         => Students.Where(t => !t.IsDeleted).OrderBy(t => t.FirstName).AsNoTracking().ToListAsync();
+
+
         public async Task<StudentCourses> EnrollToCourse(StudentCourses entity)
         {
             //TODO:Null Check
@@ -53,6 +60,17 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
         {
             //TODO:Dont take deleted
             return await Set<Student>().FindAsync(id);
+        }
+
+
+        public async Task<Student> CreateStudent(Student entity)
+        {
+            //TODO:Null Check
+            Set<Student>().Add(entity);
+
+            await SaveChangesAsync();
+
+            return entity;
         }
     }
 }
