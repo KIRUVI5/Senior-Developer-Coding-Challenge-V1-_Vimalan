@@ -25,9 +25,12 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> EnrollToCourse()
+        [Route("enroll")]
+        public async Task<ActionResult> EnrollToCourse(EnrollToCourseQuery request)
         {
-            return Ok();
+            var result = await mediator.Send(request);
+
+            return Ok(result);
         }
     }
 }

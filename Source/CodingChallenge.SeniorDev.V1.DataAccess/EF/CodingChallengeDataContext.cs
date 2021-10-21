@@ -1,5 +1,6 @@
 ﻿using CodingChallenge.SeniorDev.V1.Common.Entity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,5 +32,27 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
 
         public Task<List<Course>> GetAllCourses()
             => Courses.Where(c => !c.IsDeleted).OrderBy(c => c.Title).AsNoTracking().ToListAsync();
+
+        public async Task<StudentCourses> EnrollToCourse(StudentCourses entity)
+        {
+            //TODO:Null Check
+            Set<StudentCourses>().Add(entity);
+
+            await SaveChangesAsync();
+
+            return entity;
+        }
+
+        public async Task<Course> GetCourseById(Guid id)
+        {
+            //TODO:Dont take deleted
+            return await Set<Course>().FindAsync(id);
+        }
+
+        public async Task<Student> GetStudentById(Guid id)
+        {
+            //TODO:Dont take deleted
+            return await Set<Student>().FindAsync(id);
+        }
     }
 }
