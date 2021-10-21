@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CodingChallenge.SeniorDev.V1.Common.DTO;
 using CodingChallenge.SeniorDev.V1.Common.Entity;
+using CodingChallenge.SeniorDev.V1.Common.Exceptions;
 using CodingChallenge.SeniorDev.V1.DataAccess.EF;
 using MediatR;
 using System;
@@ -43,9 +44,15 @@ namespace CodingChallenge.SeniorDev.V1.Business.Actions.Courses
         {
             //check validation for request
 
-            //var course = await dataContext.GetCourseById(request.CourseID);
+            var course = await dataContext.GetCourseById(request.CourseID);
 
-            //var student = await dataContext.GetStudentById(request.StudentID);
+            if (course == null)
+                throw new NotFoundException($"Can't find the course for {request.CourseID}");
+
+            var student = await dataContext.GetStudentById(request.StudentID);
+
+            if (student == null)
+                throw new NotFoundException($"Can't find the student for {request.StudentID}");
 
 
             //TODO :Null check
