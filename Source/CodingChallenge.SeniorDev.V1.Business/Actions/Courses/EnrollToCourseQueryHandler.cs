@@ -42,8 +42,6 @@ namespace CodingChallenge.SeniorDev.V1.Business.Actions.Courses
 
         public async Task<EnrollToCourseQueryResult> Handle(EnrollToCourseQuery request, CancellationToken cancellationToken)
         {
-            //check validation for request
-
             var course = await dataContext.GetCourseById(request.CourseID);
 
             if (course == null)
@@ -54,13 +52,12 @@ namespace CodingChallenge.SeniorDev.V1.Business.Actions.Courses
             if (student == null)
                 throw new NotFoundException($"Can't find the student for {request.StudentID}");
 
-
-            //TODO :Null check
             StudentCourses requestObj = mapper.Map<StudentCourses>(request);
 
             var studentEntrolment = await dataContext.EnrollToCourse(requestObj);
 
-            //TODO:validation student and course
+            if (studentEntrolment == null)
+                throw new ArgumentException($"Can't entroll the student for the course");
 
             var entrolledCourse = await dataContext.GetCourseById(studentEntrolment.CourseID);           
 

@@ -4,14 +4,16 @@ using CodingChallenge.SeniorDev.V1.DataAccess.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
 {
     [DbContext(typeof(CodingChallengeDataContext))]
-    partial class CodingChallengeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20211022060058_unique_key_added")]
+    partial class unique_key_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,7 +142,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("e6f6a7b4-463d-48ff-a7b2-9e680f5ffa0a"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "ilanko@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "nimal",
                             IsDeleted = false,
                             LastName = "ilanko",
@@ -151,7 +153,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("36dca186-bd97-4da7-9a3f-877ba9b51c0b"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "mohan@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "venkat",
                             IsDeleted = false,
                             LastName = "mohan",
@@ -162,7 +164,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("18fda881-da8c-4cb2-a929-b3b901c9909d"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "theja@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "raj",
                             IsDeleted = false,
                             LastName = "theja",
@@ -173,7 +175,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("df3cedb1-23b4-4759-ac1e-b8237bc5c8d7"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "shan@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "karan",
                             IsDeleted = false,
                             LastName = "shan",
@@ -184,7 +186,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("bc4e0df4-e6f9-486b-b2f2-4f436e51d777"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "asanka@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "ravi",
                             IsDeleted = false,
                             LastName = "asanka",
@@ -195,7 +197,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("90217a07-92bc-428b-97c0-5fad0c7ef03c"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "nisan@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "mathan",
                             IsDeleted = false,
                             LastName = "nisan",
@@ -206,7 +208,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("5391b718-784a-4c15-a72d-4c5a4c35a488"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "kannan@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "juvi",
                             IsDeleted = false,
                             LastName = "kannan",
@@ -217,7 +219,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         {
                             ID = new Guid("709d37b5-685d-4afa-acda-4835c2cfef6d"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "mohan@gmail.com",
+                            Email = "Andrew@gmail.com",
                             FirstName = "ari",
                             IsDeleted = false,
                             LastName = "mohan",
@@ -268,7 +270,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(30)
@@ -282,10 +284,6 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
 
                     b.ToTable("Teachers");
 

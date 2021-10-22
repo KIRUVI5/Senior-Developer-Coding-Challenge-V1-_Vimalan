@@ -4,14 +4,16 @@ using CodingChallenge.SeniorDev.V1.DataAccess.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
 {
     [DbContext(typeof(CodingChallengeDataContext))]
-    partial class CodingChallengeDataContextModelSnapshot : ModelSnapshot
+    [Migration("20211022060502_unique_key_added2")]
+    partial class unique_key_added2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,7 +270,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasMaxLength(30)
@@ -282,10 +284,6 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
 
                     b.ToTable("Teachers");
 
