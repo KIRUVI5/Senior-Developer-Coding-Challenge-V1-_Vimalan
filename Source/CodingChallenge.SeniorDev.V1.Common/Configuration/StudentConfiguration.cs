@@ -13,7 +13,6 @@ namespace CodingChallenge.SeniorDev.V1.Common.Configuration
     {
         public void Configure(EntityTypeBuilder<Student> builder)
         {
-
             builder.HasData
             (
                 new Student { ID = Guid.Parse("e4f1d5c8-3c6b-469e-b584-4c9aeb7f4e6a"), RegistrationID = "ST001", FirstName = "Vimalan", LastName = "Kumarakulasingam", Birthdate = new DateTime(1991, 5, 26), Email = "kiruvi5@gmail.com", NICNo = "911472325v", IsDeleted = false },

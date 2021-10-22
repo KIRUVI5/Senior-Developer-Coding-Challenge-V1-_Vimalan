@@ -32,6 +32,9 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
             });
 
             modelBuilder.ApplyConfiguration(new StudentConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherCongiguration());
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentCourseConfiguration());
         }
 
         public Task<List<Course>> GetAllCourses()
