@@ -1,4 +1,5 @@
-﻿using CodingChallenge.SeniorDev.V1.Common.Entity;
+﻿using CodingChallenge.SeniorDev.V1.Common.Configuration;
+using CodingChallenge.SeniorDev.V1.Common.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
 
         }
         public CodingChallengeDataContext(DbContextOptions options) : base(options)
-        { }
+        {
+        }
 
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
@@ -28,6 +30,8 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
                sc.StudentID,
                sc.CourseID
             });
+
+            modelBuilder.ApplyConfiguration(new StudentConfiguration());
         }
 
         public Task<List<Course>> GetAllCourses()
