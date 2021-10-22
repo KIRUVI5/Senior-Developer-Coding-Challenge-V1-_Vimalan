@@ -53,7 +53,7 @@ namespace CodingChallenge.SeniorDev.V1.Business.Actions.Students
 
             var allstudents = await dataContext.GetLastAddedStudent();
 
-            var registrationID = allstudents.RegistrationID.Remove(2); 
+            var registrationID = allstudents.RegistrationID.Remove(0,2); 
 
             var id = int.Parse(registrationID);
 

@@ -16,6 +16,10 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             : base(mediator, configuration)
         {}
 
+        /// <summary>
+        /// Get all coursess
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("all")]
         public async Task<ActionResult<List<CourseModel>>> GetAll()
@@ -24,6 +28,11 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             return Ok(result.CourseList);
         }
 
+        /// <summary>
+        /// Entroll to a course
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("enroll")]
         public async Task<ActionResult> EnrollToCourse(EnrollToCourseQuery request)

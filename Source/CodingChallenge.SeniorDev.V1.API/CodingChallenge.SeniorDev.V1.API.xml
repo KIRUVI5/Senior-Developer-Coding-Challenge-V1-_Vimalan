@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CodingChallenge.SeniorDev.V1.API</name>
+    </assembly>
+    <members>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.CoursesController.GetAll">
+            <summary>
+            Get all coursess
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.CoursesController.EnrollToCourse(CodingChallenge.SeniorDev.V1.Business.Actions.Courses.EnrollToCourseQuery)">
+            <summary>
+            Entroll to a course
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.InfoController.Get">
+            <summary>
+            Get the information of the author
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.StudentsController.GetAll">
+            <summary>
+            Get all students
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.StudentsController.Create(CodingChallenge.SeniorDev.V1.Common.DTO.StudentCreateModel)">
+            <summary>
+            Create a student
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.StudentsController.Delete(CodingChallenge.SeniorDev.V1.Common.DTO.StudentDeleteModel)">
+            <summary>
+            Delete a student
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CodingChallenge.SeniorDev.V1.API.Controllers.TeachersController.GetAll">
+            <summary>
+            Get all teachers
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -16,6 +16,10 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             : base(mediator, configuration)
         { }
 
+        /// <summary>
+        /// Get all teachers
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("all")]
         public async Task<ActionResult<List<TeacherModel>>> GetAll()

@@ -17,6 +17,10 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             : base(mediator, configuration, mapper)
         { }
 
+        /// <summary>
+        /// Get all students
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("all")]
         public async Task<ActionResult<List<StudentModel>>> GetAll()
@@ -25,6 +29,11 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             return Ok(result.StudentList);
         }
 
+        /// <summary>
+        /// Create a student
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("create")]
         public async Task<ActionResult<StudentModel>> Create(StudentCreateModel request)
@@ -36,6 +45,11 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// Delete a student
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("delete")]
         public async Task<ActionResult<List<string>>> Delete(StudentDeleteModel request)

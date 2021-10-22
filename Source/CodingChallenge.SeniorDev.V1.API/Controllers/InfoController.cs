@@ -12,6 +12,10 @@ namespace CodingChallenge.SeniorDev.V1.API.Controllers
             : base(mediator, configuration)
         { }
 
+        /// <summary>
+        /// Get the information of the author
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("")]
         public InfoConfig Get()
