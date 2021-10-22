@@ -122,7 +122,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "Vimalan",
                             IsDeleted = false,
                             LastName = "Kumarakulasingam",
-                            NICNo = "911472325v",
+                            NICNo = "91781472325v",
                             RegistrationID = "ST001"
                         },
                         new
@@ -133,7 +133,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "hari",
                             IsDeleted = false,
                             LastName = "Andrew",
-                            NICNo = "921472325v",
+                            NICNo = "92147872325v",
                             RegistrationID = "ST002"
                         },
                         new
@@ -144,7 +144,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "nimal",
                             IsDeleted = false,
                             LastName = "ilanko",
-                            NICNo = "921472325v",
+                            NICNo = "93671472325v",
                             RegistrationID = "ST003"
                         },
                         new
@@ -155,7 +155,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "venkat",
                             IsDeleted = false,
                             LastName = "mohan",
-                            NICNo = "921472325v",
+                            NICNo = "941478972325v",
                             RegistrationID = "ST004"
                         },
                         new
@@ -166,7 +166,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "raj",
                             IsDeleted = false,
                             LastName = "theja",
-                            NICNo = "921472325v",
+                            NICNo = "96146772325v",
                             RegistrationID = "ST005"
                         },
                         new
@@ -177,7 +177,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "karan",
                             IsDeleted = false,
                             LastName = "shan",
-                            NICNo = "921472325v",
+                            NICNo = "971454372325v",
                             RegistrationID = "ST006"
                         },
                         new
@@ -188,7 +188,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "ravi",
                             IsDeleted = false,
                             LastName = "asanka",
-                            NICNo = "921472325v",
+                            NICNo = "9561472325v",
                             RegistrationID = "ST007"
                         },
                         new
@@ -199,7 +199,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "mathan",
                             IsDeleted = false,
                             LastName = "nisan",
-                            NICNo = "921472325v",
+                            NICNo = "926781472325v",
                             RegistrationID = "ST008"
                         },
                         new
@@ -210,18 +210,18 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.Migrations
                             FirstName = "juvi",
                             IsDeleted = false,
                             LastName = "kannan",
-                            NICNo = "921472325v",
+                            NICNo = "95764621472325v",
                             RegistrationID = "ST009"
                         },
                         new
                         {
                             ID = new Guid("709d37b5-685d-4afa-acda-4835c2cfef6d"),
                             Birthdate = new DateTimeOffset(new DateTime(1992, 5, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 5, 30, 0, 0)),
-                            Email = "mohan@gmail.com",
+                            Email = "ari@gmail.com",
                             FirstName = "ari",
                             IsDeleted = false,
                             LastName = "mohan",
-                            NICNo = "921472325v",
+                            NICNo = "921897472325v",
                             RegistrationID = "ST0010"
                         });
                 });

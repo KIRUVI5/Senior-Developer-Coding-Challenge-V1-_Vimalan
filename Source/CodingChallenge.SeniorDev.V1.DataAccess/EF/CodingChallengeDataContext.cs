@@ -31,6 +31,11 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
                sc.CourseID
             });
 
+            modelBuilder.ApplyConfiguration(new StudentConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherCongiguration());
+            modelBuilder.ApplyConfiguration(new CourseConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentCourseConfiguration());
+
             modelBuilder.Entity<Student>()
                         .HasIndex(s => s.Email).IsUnique();
 
@@ -39,12 +44,7 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
 
             modelBuilder.Entity<Teacher>()
                       .HasIndex(t => t.Email).IsUnique();
-
-
-            modelBuilder.ApplyConfiguration(new StudentConfiguration());
-            modelBuilder.ApplyConfiguration(new TeacherCongiguration());
-            modelBuilder.ApplyConfiguration(new CourseConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentCourseConfiguration());
+                        
         }
 
         public Task<List<Course>> GetAllCourses()
