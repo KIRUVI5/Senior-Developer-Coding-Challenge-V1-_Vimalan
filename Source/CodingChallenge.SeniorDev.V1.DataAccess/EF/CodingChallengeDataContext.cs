@@ -56,6 +56,9 @@ namespace CodingChallenge.SeniorDev.V1.DataAccess.EF
         public Task<List<Student>> GetAllStudents()
          => Students.Where(t => !t.IsDeleted).OrderBy(t => t.FirstName).AsNoTracking().ToListAsync();
 
+        public async Task<Student> GetLastAddedStudent()
+            => await Students.OrderByDescending(t => t.RegistrationID).FirstOrDefaultAsync();
+
         public async Task<Course> GetCourseById(Guid id)
            => await Courses.Where(c => !c.IsDeleted && c.ID == id).OrderBy(c => c.Title).FirstOrDefaultAsync();
 

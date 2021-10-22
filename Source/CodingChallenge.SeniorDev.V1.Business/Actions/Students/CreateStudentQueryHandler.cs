@@ -51,7 +51,35 @@ namespace CodingChallenge.SeniorDev.V1.Business.Actions.Students
           
             Student requestObj = mapper.Map<Student>(request);
 
-            //var allstudents =  dataContext.GetAllStudents().Result.OrderByDescending(s =>s.RegistrationID)
+            var allstudents = await dataContext.GetLastAddedStudent();
+
+            var registrationID = allstudents.RegistrationID.Remove(2); 
+
+            var id = int.Parse(registrationID);
+
+            string regID = $"ST";
+
+            if (allstudents !=null)
+            {
+                if (id < 10)
+                {
+                    regID += $"00{id + 1}";
+                }
+                else if (id > 10 && id < 100)
+                {
+                    regID += $"0{id + 1}";
+                }
+                else
+                {
+                    regID += $"0{id + 1}";
+                }
+            }
+            else
+            {
+                regID = $"ST001";
+            }
+
+            requestObj.RegistrationID = regID;
 
             var student = await dataContext.CreateStudent(requestObj);
 
